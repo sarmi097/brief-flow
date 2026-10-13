@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Formulario de Brief Multipaso</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <div class="ambient-orb orb-1"></div>
+
+    <div class="ambient-orb orb-2"></div>
+
+    <div class="ambient-orb orb-3"></div>
+
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-brand">SARMI<span class="splash-brand-accent">S07</span></div>
+            <div class="splash-subtitle">CONSULTOR�A DIGITAL</div>
+        </div>
+        <div class="splash-loader">
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-percent"><span id="progressPercent">0</span>%</div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+
+        <div class="glass-container">
+
+            <div class="form-header">
+
+                <h1 class="form-title">Brief de Proyecto</h1>
+
+                <div class="step-indicator"><span id="stepIndicator">Paso 1 de 3</span></div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+            </div>
+
+            <form id="briefForm" novalidate>
+
+                <input type="hidden" name="_subject" value="Nuevo Brief - Formulario Multipaso">
+
+                <input type="hidden" name="_replyto" id="replyTo">
+
+                <input type="hidden" name="_cc" id="ccTo">
+
+                <div class="form-body">
+
+                    <div class="step active" data-step="1">
+
+                        <div class="step-content">
+
+                            <h2 class="step-title">Sobre ti y tu proyecto</h2>
+
+                            <p class="step-description">CuÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©ntanos
+                                quiÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©n eres y
+                                cÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³mo contactarte.</p>
+
+                            <div class="mb-3">
+
+                                <label for="nombre" class="form-label">Nombre o Empresa <span
+                                        class="required">*</span></label>
+
+                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                    placeholder="Ej.: Juan PÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©rez o Agencia XYZ">
+
+                                <div class="text-danger" id="error-nombre"></div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="correo" class="form-label">Correo
+                                    electrÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³nico de contacto <span
+                                        class="required">*</span></label>
+
+                                <input type="email" class="form-control" id="correo" name="correo"
+                                    placeholder="ejemplo@correo.com">
+
+                                <div class="text-danger" id="error-correo"></div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="telefono" class="form-label">TelÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©fono
+                                    / WhatsApp <span class="optional">(Opcional)</span></label>
+
+                                <input type="tel" class="form-control" id="telefono" name="telefono"
+                                    placeholder="+51 999 999 999">
+
+                            </div>
+
+                            <div class="mb-4 mt-4">
+
+                                <div class="form-check p-3"
+                                    style="background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 12px;">
+
+                                    <input class="form-check-input" type="checkbox" value="1" id="noSoyRobot"
+                                        style="transform: scale(1.2); cursor: none;">
+
+                                    <label class="form-check-label ms-2" for="noSoyRobot" style="cursor: none;">
+
+                                        <strong>No soy un robot</strong>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="text-danger" id="error-robot"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="step" data-step="2">
+
+                        <div class="step-content">
+
+                            <h2 class="step-title">
+                                ÃÆÃâÃÂ¢Ã¢âÂ¬Ã
+Â¡ÃâÃÂÂ¿QuÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ© necesitas
+                                para tu proyecto?</h2>
+
+                            <p class="step-description">Selecciona la opciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n que
+                                mejor se adapte a lo que buscas.</p>
+
+                            <div class="selection-grid">
+
+                                <div class="selection-card checkbox-card"
+                                    data-value="RediseÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ±o pÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡gina web">
+
+                                    <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+
+                                    <div class="card-title">RediseÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ±o
+                                        pÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡gina web</div>
+
+                                    <div class="card-description">RenovaciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n
+                                        visual, estructura y experiencia de usuario.</div>
+
+                                </div>
+
+                                <div class="selection-card checkbox-card"
+                                    data-value="SEO/OptimizaciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n de imÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡genes">
+
+                                    <div class="card-icon"><i class="fas fa-search-plus"></i></div>
+
+                                    <div class="card-title">SEO/OptimizaciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n de
+                                        imÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡genes</div>
+
+                                    <div class="card-description">Mejora de posicionamiento y rendimiento visual.</div>
+
+                                </div>
+
+                                <div class="selection-card checkbox-card" data-value="Funcionalidad personalizada">
+
+                                    <div class="card-icon"><i class="fas fa-code"></i></div>
+
+                                    <div class="card-title">Funcionalidad personalizada</div>
+
+                                    <div class="card-description">La web no es solo texto e
+                                        imÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡genes
+                                        estÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ¡ticas: incluye capacidades operativas
+                                        a medida de tu negocio.</div>
+
+                                </div>
+
+                            </div>
+
+                            <div id="tipoProyectoChecks" style="display: none;">
+
+                                <input type="hidden" name="necesidad_redisenio" value="No">
+
+                                <input type="hidden" name="necesidad_seo" value="No">
+
+                                <input type="hidden" name="necesidad_funcionalidad" value="No">
+
+                            </div>
+
+                            <div class="text-danger" id="error-tipoProyecto"></div>
+
+                            <div class="mb-3">
+
+                                <label for="resumenNegocio" class="form-label">Resumen o idea del negocio <span
+                                        class="required">*</span></label>
+
+                                <textarea class="form-control" id="resumenNegocio" name="resumen_negocio" rows="3"
+                                    placeholder="CuÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©ntanos brevemente sobre tu negocio, objetivo y pÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂºblico objetivo..."></textarea>
+
+                                <div class="text-danger" id="error-resumenNegocio"></div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="referencias" class="form-label">Sitios web de referencia o estilos que te
+                                    gusten <span class="required">*</span></label>
+
+                                <textarea class="form-control" id="referencias" name="referencias" rows="3"
+                                    placeholder="URL de sitios web (https://ejemplo.com) o descripciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n de estilos, colores, inspiraciones..."></textarea>
+
+                                <div class="form-text">Este campo es obligatorio.</div>
+
+                                <div class="text-danger" id="error-referencias"></div>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label for="atascos" class="form-label">ÃÆÃâÃÂ¢Ã¢âÂ¬Ã
+Â¡ÃâÃÂÂ¿El proyecto
+                                    tiene atascos o limitaciones? <span class="optional">(Opcional)</span></label>
+
+                                <textarea class="form-control" id="atascos" name="atascos" rows="2"
+                                    placeholder="Indica si hay bloqueos, restricciones, integraciones pendientes, etc."></textarea>
+
+                                <div class="form-text">Si el proyecto tiene atascos, puedes detallarlos
+                                    aquÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ­.</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="step" data-step="3">
+
+                        <div class="step-content">
+
+                            <h2 class="step-title">Plazos y detalles finales</h2>
+
+                            <p class="step-description">ÃÆÃâÃâ Ã¢â¬â¢Ãâ¦ÃÂ¡ltimos detalles para completar tu
+                                brief.</p>
+
+                            <div class="mb-3">
+
+                                <label for="plazo" class="form-label">Plazo estimado de entrega <span
+                                        class="required">*</span></label>
+
+                                <select class="form-select" id="plazo" name="plazo">
+
+                                    <option value="" selected>Selecciona una
+                                        opciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n...</option>
+
+                                    <option value="Lo antes posible">Lo antes posible</option>
+
+                                    <option value="En 1 mes">En 1 mes</option>
+
+                                    <option value="No tengo prisa">No tengo prisa</option>
+
+                                    <option value="Fecha estimada">Tengo una fecha estimada</option>
+
+                                </select>
+
+                                <div class="text-danger" id="error-plazo"></div>
+
+                            </div>
+
+                            <div class="mb-3" id="fechaEstimadaGroup" style="display: none;">
+
+                                <label for="fechaEstimada" class="form-label">Indica la fecha estimada <span
+                                        class="required">*</span></label>
+
+                                <input type="text" class="form-control" id="fechaEstimada" name="fecha_estimada"
+                                    placeholder="Ej.: 15 de diciembre de 2026">
+
+                                <div class="text-danger" id="error-fechaEstimada"></div>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label for="comentarios" class="form-label">Comentarios adicionales o referencias que te
+                                    gusten <span class="optional">(Opcional)</span></label>
+
+                                <textarea class="form-control" id="comentarios" name="comentarios" rows="4"
+                                    placeholder="InformaciÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ³n extra, detalles adicionales, ideas complementarias..."></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-footer">
+
+                    <button type="button" class="btn btn-prev" id="btnPrev" style="display: none;"><i
+                            class="fas fa-arrow-left me-2"></i>Anterior</button>
+
+                    <div style="flex: 1;"></div>
+
+                    <button type="button" class="btn btn-next" id="btnNext">Siguiente <i
+                            class="fas fa-arrow-right ms-2"></i></button>
+
+                    <button type="submit" class="btn btn-submit" id="btnSubmit" style="display: none;"><i
+                            class="fas fa-paper-plane me-2"></i>Enviar</button>
+
+                </div>
+
+                <div class="p-3 text-center"
+                    style="color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--glass-border);">
+
+                    Tus datos est&aacute;n seguros. La informaci&oacute;n suministrada en este brief ser&aacute; utilizada &uacute;nica y exclusivamente para el an&aacute;lisis, desarrollo del proyecto y comprensi&oacute;n de las necesidades t&eacute;cnicas, garantizando absoluta confidencialidad y sin ser compartida con terceros.</div>
+
+            </form>
+
+            <div class="success-screen" id="successScreen">
+
+                <div class="success-icon">
+
+                    <div class="success-circle"><i class="fas fa-check success-check"></i></div>
+
+                </div>
+
+                <h2 class="success-title">ÃÆÃâÃÂ¢Ã¢âÂ¬Ã
+Â¡ÃÆÃâÃâÃÂ¡Brief enviado con
+                    ÃÆÃâÃâ Ã¢â¬â¢ÃÆÃâÃâÃÂ©xito!</h2>
+
+                <p class="success-message">Gracias por confiar en nosotros.<br>Hemos recibido tu brief correctamente y
+                    te contactaremos pronto.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
